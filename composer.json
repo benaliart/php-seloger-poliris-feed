@@ -1,0 +1,19 @@
+{
+    "name": "meilleursbiens/seloger-poliris-feed",
+    "description": "Librairie PHP pour générer des flux Seloger Poliris (version 4.09)",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MeilleursBiens\\SeLogerPolirisFeed\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-zip": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    }
+}
+
