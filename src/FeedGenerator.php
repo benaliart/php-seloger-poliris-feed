@@ -55,7 +55,7 @@ class FeedGenerator
             }
 
             // Sépare les champs par !#
-            $csv .= implode(' !# ', $line) . "\r\n";
+            $csv .= implode('!#', $line) . "\r\n";
         }
 
         return $csv;

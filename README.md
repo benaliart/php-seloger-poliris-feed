@@ -2,6 +2,8 @@
 
 Librairie PHP permettant de générer facilement des flux Seloger Poliris conformes aux spécifications techniques version 4.09.
 
+Ce fork modifie le fichier FeedGenerator.php pour retirer les espaces autours du séparateurs !# dans le fichier csv
+
 ## Installation
 
 ```bash
