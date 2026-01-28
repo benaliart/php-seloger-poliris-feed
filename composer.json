@@ -1,11 +1,11 @@
 {
-    "name": "meilleursbiens/seloger-poliris-feed",
-    "description": "Librairie PHP pour générer des flux Seloger Poliris (version 4.09)",
+    "name": "benaliart/seloger-poliris-feed",
+    "description": "Fork : Librairie PHP pour générer des flux Seloger Poliris (version 4.09)",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "MeilleursBiens\\SeLogerPolirisFeed\\": "src/"
+            "BenAliart\\SeLogerPolirisFeed\\": "src/"
         }
     },
     "require": {
