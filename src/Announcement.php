@@ -657,7 +657,7 @@ class Announcement
     public function setCustomField(int $index, string $value): self
     {
         if ($index >= 1 && $index <= 25) {
-            $this->fields[135 + $index] = $value;
+            $this->fields[134 + $index] = $value;
         } elseif ($index === 26) {
             $this->fields[262] = $value;
         }
