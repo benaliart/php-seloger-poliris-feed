@@ -1,21 +1,22 @@
 # Librairie PHP Seloger Poliris
 
-Librairie PHP permettant de générer facilement des flux Seloger Poliris conformes aux spécifications techniques version 4.09.
+Librairie PHP permettant de générer facilement des flux Seloger Poliris conformes aux spécifications techniques version ~~4.09~~ 4.12.
 
-Ce fork modifie le fichier FeedGenerator.php pour retirer les espaces autours du séparateurs !# dans le fichier csv
+## Ajustements réalisés dans ce Fork :
+
+- modification du fichier FeedGenerator.php pour retirer les espaces autours du séparateurs !# dans le fichier csv
+- Mise à disposition de la doc Se Loger 4.12
+- Création de quelques champs supplémentaires relatifs à la version 4.12 de la document Se Loger
+  - Ajouts des champs DPE (325 à 328)
 
 ## Installation
 
-```bash
-composer require seloger/poliris-feed
-```
-
-Ou ajoutez manuellement dans votre `composer.json` :
+ajoutez manuellement dans votre `composer.json` :
 
 ```json
 {
     "require": {
-        "seloger/poliris-feed": "*"
+        "benaliart/seloger-poliris-feed": "dev-master"
     }
 }
 ```

@@ -45,7 +45,7 @@ class Announcement
         string $title,
         string $description
     ) {
-        $this->fields = array_fill(0, 329, '');
+        $this->fields = array_fill(0, 334, '');
 
         // Champs obligatoires
         $this->fields[0] = $agencyId;
@@ -60,7 +60,7 @@ class Announcement
         $this->fields[19] = $title;
         $this->fields[20] = $description;
         $this->fields[174] = $technicalId;
-        $this->fields[300] = '4.09'; // Version du format
+        $this->fields[300] = '4.12'; // Version du format
     }
 
     /**
@@ -455,9 +455,12 @@ class Announcement
      */
     public function setContactInfo(?string $phone = null, ?string $contact = null, ?string $email = null): self
     {
-        if ($phone) $this->fields[104] = $phone;
-        if ($contact) $this->fields[105] = $contact;
-        if ($email) $this->fields[106] = $email;
+        if ($phone)
+            $this->fields[104] = $phone;
+        if ($contact)
+            $this->fields[105] = $contact;
+        if ($email)
+            $this->fields[106] = $email;
         return $this;
     }
 
@@ -469,8 +472,10 @@ class Announcement
      */
     public function setRealLocation(?string $postalCode = null, ?string $city = null): self
     {
-        if ($postalCode) $this->fields[107] = $postalCode;
-        if ($city) $this->fields[108] = $city;
+        if ($postalCode)
+            $this->fields[107] = $postalCode;
+        if ($city)
+            $this->fields[108] = $city;
         return $this;
     }
 
@@ -504,18 +509,49 @@ class Announcement
      * @param string|null $energyClass Classification (A-G, VI pour vierge, NS pour non soumis)
      * @param int|null $gasEmissions Émissions de GES en kg éqCO2/m²/an
      * @param string|null $gasClass Classification des émissions
+     * @param string|null $dateDpeDone (**NEW in 4.12**) Date réalisation DPE (JJ/MM/YYYY)  
+     * @param string|null $dpeVersion (**NEW in 4.12**) (Loi ELAN) Choisir entre DPE_v01-2011 
+     * ( DPE effectué avant le 1 juillet 2021 ) et DPE_v07-2021 ( après le 1 juillet 2021 ) 
+     * @param float|null $dpeMinCost (**NEW in 4.12**) Montant bas supposé et théorique des dépenses énergétiques 
+     * Montant abonnement inclus 
+     * @param float|null $dpeMaxCost (**NEW in 4.12**) Montant haut supposé et théorique des dépenses énergétiques 
+     * Montant abonnement inclus 
+     * @param string|null $dpeReferenceConsoDate (**NEW in 4.12**) Date de référence utilisée 
+     * pour établir la simulation des dépenses dʼénergie date au format JJ/MM/AAAA 
      * @return $this
      */
     public function setDPE(
         ?int $energyConsumption = null,
         ?string $energyClass = null,
         ?int $gasEmissions = null,
-        ?string $gasClass = null
+        ?string $gasClass = null,
+        ?string $dateDpeDone = null,
+        ?string $dpeVersion = null,
+        ?float $dpeMinCost = null,
+        ?float $dpeMaxCost = null,
+        ?string $dpeReferenceConsoDate = null
     ): self {
-        if ($energyConsumption !== null) $this->fields[175] = $energyConsumption;
-        if ($energyClass !== null) $this->fields[176] = $energyClass;
-        if ($gasEmissions !== null) $this->fields[177] = $gasEmissions;
-        if ($gasClass !== null) $this->fields[178] = $gasClass;
+        if ($energyConsumption !== null)
+            $this->fields[175] = $energyConsumption;
+        if ($energyClass !== null)
+            $this->fields[176] = $energyClass;
+        if ($gasEmissions !== null)
+            $this->fields[177] = $gasEmissions;
+        if ($gasClass !== null)
+            $this->fields[178] = $gasClass;
+
+        // (**NEW in 4.12**)
+        if ($dateDpeDone !== null)
+            $this->fields[323] = $dateDpeDone;
+        if ($dpeVersion !== null)
+            $this->fields[324] = $dpeVersion;
+        if ($dpeMinCost !== null)
+            $this->fields[325] = $dpeMinCost;
+        if ($dpeMaxCost !== null)
+            $this->fields[326] = $dpeMaxCost;
+        if ($dpeReferenceConsoDate !== null)
+            $this->fields[327] = $dpeReferenceConsoDate;
+
         return $this;
     }
 
@@ -592,10 +628,14 @@ class Announcement
         ?string $procedureDetails = null
     ): self {
         $this->fields[257] = $inCondominium ? 'OUI' : 'NON';
-        if ($numberOfLots !== null) $this->fields[258] = $numberOfLots;
-        if ($annualCharges !== null) $this->fields[259] = $annualCharges;
-        if ($inProcedure !== null) $this->fields[260] = $inProcedure ? 'OUI' : 'NON';
-        if ($procedureDetails !== null) $this->fields[261] = $procedureDetails;
+        if ($numberOfLots !== null)
+            $this->fields[258] = $numberOfLots;
+        if ($annualCharges !== null)
+            $this->fields[259] = $annualCharges;
+        if ($inProcedure !== null)
+            $this->fields[260] = $inProcedure ? 'OUI' : 'NON';
+        if ($procedureDetails !== null)
+            $this->fields[261] = $procedureDetails;
         return $this;
     }
 
@@ -623,5 +663,7 @@ class Announcement
         }
         return $this;
     }
+
+
 }
 

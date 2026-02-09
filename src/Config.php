@@ -42,7 +42,7 @@ class Config
      */
     public function generate(): string
     {
-        $config = "Version=4.09\r\n";
+        $config = "Version=4.12\r\n";
         $config .= "Application={$this->applicationName} / {$this->applicationVersion}\r\n";
         $config .= "Devise=Euro\r\n";
 
