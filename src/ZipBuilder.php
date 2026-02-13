@@ -70,7 +70,7 @@ class ZipBuilder
      * @param string $outputPath Chemin de sortie du fichier ZIP
      * @return bool
      */
-    public function build(string $outputPath): bool
+    public function build(string $outputPath, ?string $encode = null): bool
     {
         $zip = new ZipArchive();
 
@@ -79,7 +79,7 @@ class ZipBuilder
         }
 
         // Ajoute Annonces.csv
-        $csv = $this->feedGenerator->generateCSV();
+        $csv = $this->feedGenerator->generateCSV($encode);
         $zip->addFromString('Annonces.csv', $csv);
 
         // Ajoute Config.txt
@@ -131,4 +131,3 @@ class ZipBuilder
         return $this;
     }
 }
-

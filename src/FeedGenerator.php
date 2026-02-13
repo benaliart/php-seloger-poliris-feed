@@ -39,7 +39,7 @@ class FeedGenerator
      * Génère le contenu du fichier Annonces.csv
      * @return string
      */
-    public function generateCSV(): string
+    public function generateCSV(?string $encode = null): string
     {
         $csv = '';
 
@@ -57,6 +57,9 @@ class FeedGenerator
             // Sépare les champs par !#
             $csv .= implode('!#', $line) . "\r\n";
         }
+
+        if($encode == "Windows-1252")
+            $csv = iconv('UTF-8', 'Windows-1252//TRANSLIT', $csv);
 
         return $csv;
     }
@@ -91,9 +94,9 @@ class FeedGenerator
      * @param string $filepath Chemin du fichier
      * @return bool
      */
-    public function saveCSV(string $filepath): bool
+    public function saveCSV(string $filepath, ?string $encode = null): bool
     {
-        $csv = $this->generateCSV();
+        $csv = $this->generateCSV($encode);
         return file_put_contents($filepath, $csv) !== false;
     }
 
@@ -116,4 +119,3 @@ class FeedGenerator
         return $this;
     }
 }
-
